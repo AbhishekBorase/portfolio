@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import profileImage from './assets/profile.png';
 import officeHeroBg from './assets/office-bg-hero.svg';
 import devopsHero from './assets/devops-hero.svg';
@@ -49,8 +50,11 @@ const certifications = [
 ];
 
 function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setIsMobileMenuOpen(false); // Close mobile menu after navigation
   };
 
   return (
@@ -59,7 +63,7 @@ function App() {
       <header className="header">
         <div className="container header-content">
           <div className="logo">Abhishek Borase</div>
-          <nav className="nav">
+          <nav className={`nav ${isMobileMenuOpen ? 'nav-open' : ''}`}>
             <a href="#hero" onClick={() => scrollToSection('hero')}>Home</a>
             <a href="#about" onClick={() => scrollToSection('about')}>About</a>
             <a href="#experience" onClick={() => scrollToSection('experience')}>Experience</a>
@@ -67,6 +71,15 @@ function App() {
             <a href="#contact" onClick={() => scrollToSection('contact')}>Contact</a>
           </nav>
           <button className="cta-btn" onClick={() => scrollToSection('contact')}>Get in Touch</button>
+          <button
+            className={`hamburger ${isMobileMenuOpen ? 'hamburger-open' : ''}`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </header>
 
