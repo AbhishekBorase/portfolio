@@ -49,6 +49,29 @@ const certifications = [
   { name: 'AWS Cloud Practitioner', link: 'https://drive.google.com/file/d/1Vq43wOVDweuAyCc3bM8UbEcDEeTfSN61/view?usp=sharing' }
 ];
 
+const projects = [
+  {
+    name: 'One2N Deployments',
+    description: 'A project showcasing the design and deployment of a Simple API connecting to the database, demonstrating CI/CD workflow, containerization, and cloud deployment best practices.',
+    github: 'https://github.com/AbhishekBorase/one2N_bootcamp'
+  },
+  {
+    name: 'Face Recognition System',
+    description: 'Implemented a face recognition system using OpenCV and deep learning techniques, achieving high accuracy in identifying and verifying individuals in real-time applications.',
+    github: 'https://github.com/AbhishekBorase/Face_recognition_project'
+  },
+  {
+    name: 'Face Mask Detection',
+    description: 'Developed a computer vision solution for real-time face mask detection using deep learning models.',
+    github: 'https://github.com/AbhishekBorase/FaceMaskDetection'
+  },
+  {
+    name: 'Stock Price Prediction',
+    description: 'Built a machine learning model to predict stock prices based on historical data and market trends.',
+    github: 'https://github.com/AbhishekBorase/stock_predict'
+  }
+];
+
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -69,6 +92,7 @@ function App() {
             <a href="#ebook" onClick={() => scrollToSection('ebook')}>Ebook</a>
             <a href="#experience" onClick={() => scrollToSection('experience')}>Experience</a>
             <a href="#skills" onClick={() => scrollToSection('skills')}>Skills</a>
+            <a href="#work" onClick={() => scrollToSection('work')}>My Work</a>
             <a href="#contact" onClick={() => scrollToSection('contact')}>Contact</a>
           </nav>
           <button className="cta-btn" onClick={() => scrollToSection('contact')}>Get in Touch</button>
@@ -237,6 +261,26 @@ function App() {
               <p className="school">Savitribai Phule Pune University</p>
               <p className="meta">GPA: 8.65 / 10.0 • Apr 2019 – Apr 2023</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" className="work">
+        <div className="container">
+          <div className="section-header center">
+            <h2>My Work</h2>
+            <p>A few projects that reflect my hands-on experience across DevOps, cloud infrastructure, automation and machine learning enthusiasm.</p>
+          </div>
+          <div className="work-grid">
+            {projects.map((project) => (
+              <article key={project.name} className="work-card">
+                <h3>{project.name}</h3>
+                <p>{project.description}</p>
+                <a href={project.github} target="_blank" rel="noreferrer" className="work-link">
+                  View Repository
+                </a>
+              </article>
+            ))}
           </div>
         </div>
       </section>

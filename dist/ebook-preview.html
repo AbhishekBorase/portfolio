@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/portfolio/favicon.svg" />
     <title>Preview - Deploy Faster, Break Less</title>
     <style>
       :root {
@@ -40,7 +41,7 @@
         display: grid;
         grid-template-columns: 2fr 1fr;
         gap: 2rem;
-        align-items: start;
+        align-items: stretch;
       }
       .preview-panel,
       .sidebar-panel,
@@ -99,17 +100,94 @@
         background: #1d4ed8;
         transform: translateY(-2px);
       }
+      .sidebar-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        box-sizing: border-box;
+        text-align: center;
+      }
+      .sidebar-panel h2,
+      .sidebar-panel .key-points {
+        text-align: left;
+      }
+      .price-stack {
+        margin: 0 0 1rem;
+        text-align: center;
+      }
+      .sidebar-cta {
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 180px;
+      }
+      .price-compare {
+        position: relative;
+        display: inline-block;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        background: linear-gradient(90deg, #f97316 0%, #ef4444 45%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        padding: 0.15rem 0.1rem 0.35rem;
+      }
+      .price-compare::after {
+        content: '';
+        position: absolute;
+        left: -4%;
+        top: 52%;
+        width: 108%;
+        height: 0.28rem;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #ef4444 0%, #f59e0b 100%);
+        transform: scaleX(0);
+        transform-origin: left center;
+        animation: price-slash 1.15s ease-out 0.4s forwards;
+        box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
+      }
+      .price-note {
+        margin: 0.55rem 0 0;
+        color: #64748b;
+        font-size: 0.95rem;
+        text-align: center;
+      }
+      @keyframes price-slash {
+        0% {
+          transform: scaleX(0);
+          opacity: 0.2;
+        }
+        65% {
+          transform: scaleX(1.05);
+          opacity: 1;
+        }
+        100% {
+          transform: scaleX(1);
+          opacity: 1;
+        }
+      }
       .meet-panel {
         display: grid;
-        grid-template-columns: 180px 1fr;
-        gap: 2rem;
-        align-items: center;
+        grid-template-columns: 1.2fr 0.95fr;
+        gap: 2.5rem;
+        align-items: start;
         padding: 2.5rem;
         margin-top: 3rem;
       }
+      .meet-aside {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
       .meet-photo {
-        width: 180px;
-        height: 180px;
+        width: 350px;
+        height: 400px;
         border-radius: 1.5rem;
         overflow: hidden;
         box-shadow: 0 18px 40px rgba(15, 23, 42, 0.15);
@@ -121,10 +199,25 @@
         object-fit: cover;
         display: block;
       }
+      .meet-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
       .meet-copy p {
         margin: 0.75rem 0 1rem;
         color: #475569;
         line-height: 1.75;
+      }
+      .meet-aside-points {
+        width: min(300px, 100%);
+      }
+      .meet-aside-points p {
+        margin: 0 0 0.85rem;
+        color: #475569;
+        line-height: 1.7;
+        text-align: left;
       }
       .meet-copy ul {
         list-style: none;
@@ -143,6 +236,18 @@
         color: #64748b;
         font-size: 0.95rem;
       }
+      .copyright-footer {
+        background: #0f172a;
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+        border-top: 1px solid rgba(15, 23, 42, 0.08);
+      }
+      .copyright-footer p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95rem;
+      }
       @media (max-width: 900px) {
         .content-grid {
           grid-template-columns: 1fr;
@@ -154,8 +259,11 @@
         }
         .meet-panel .meet-photo {
           margin: 0 auto;
-          width: 140px;
-          height: 140px;
+          width: 160px;
+          height: 160px;
+        }
+        .meet-aside-points {
+          width: 100%;
         }
       }
     </style>
@@ -163,7 +271,7 @@
   <body>
     <div class="page-container">
       <header class="page-header">
-        <p style="color:#2563eb;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1rem;">Ebook Preview</p>
+        <p style="color:#2563eb;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1rem;">Ebook </p>
         <h1>Deploy Faster, Break Less</h1>
         <p>Open the preview to explore the core DevOps strategies, infrastructure best practices, and automation patterns I cover in the ebook.</p>
       </header>
@@ -175,27 +283,31 @@
         </section>
 
         <aside class="sidebar-panel">
-          <h2>What this ebook covers</h2>
-          <ul class="key-points">
-            <li>How to build CI/CD pipelines that reduce deployment risk</li>
-            <li>Proven monitoring and observability decisions for stable ops</li>
-            <li>Automation playbook for repeatable infrastructure provisioning</li>
-            <li>Release strategies that avoid production outages</li>
-            <li>Best practices for team collaboration and incident response</li>
-            <li>Real-world examples from live DevOps environments</li>
-          </ul>
-          <a class="btn-primary" href="/portfolio/#contact">Get full access at just ₹19</a>
+          <div>
+            <h2>What this ebook covers</h2>
+            <ul class="key-points">
+              <li>How to build CI/CD pipelines that reduce deployment risk</li>
+              <li>Proven monitoring and observability decisions for stable ops</li>
+              <li>Automation playbook for repeatable infrastructure provisioning</li>
+              <li>Release strategies that avoid production outages</li>
+              <li>Best practices for team collaboration and incident response</li>
+              <li>Real-world examples from live DevOps environments</li>
+            </ul>
+          </div>
+          <div class="sidebar-cta">
+            <div class="price-stack" aria-label="Original price crossed out">
+              <div class="price-compare">₹199</div>
+              <p class="price-note">Special launch price available today</p>
+            </div>
+            <a class="btn-primary" href="/portfolio/#contact">Get full access at just ₹19</a>
+          </div>
         </aside>
       </div>
 
       <section class="meet-panel" style="margin-top: 2rem;">
-        <div class="meet-photo">
-          <img src="/portfolio/profile.png" alt="Abhishek Borase" />
-        </div>
         <div class="meet-copy">
           <h2>Meet Abhishek Borase</h2>
-          <p>I am a passionate DevOps engineer with over 3 years of experience in building scalable, reliable, and automated infrastructure solutions. My journey started with a strong foundation in software development, which evolved into a deep expertise in cloud technologies and DevOps practices.</p>
-          <p>Currently working as a Software Development Engineer at EquiLend, I specialize in designing and implementing CI/CD pipelines, container orchestration, and infrastructure automation that enable teams to deploy faster and more reliably.</p>
+          <p>I am a passionate DevOps engineer building scalable, reliable, and automated infrastructure solutions. My journey started with a strong foundation in software development and evolved into deep expertise in cloud technologies and DevOps practices.</p>
           <ul>
             <li><strong>Expertise:</strong> AWS, Kubernetes, Terraform, Jenkins, Docker, Spring Boot</li>
             <li><strong>Focus:</strong> Scalable automation, observability, infrastructure as code, cloud migration</li>
@@ -204,9 +316,17 @@
             <li><strong>Goal:</strong> Help engineering teams bridge the gap between development and operations for seamless, high-quality software delivery</li>
           </ul>
         </div>
+        <div class="meet-aside">
+          <div class="meet-photo">
+            <img src="/portfolio/profile.png" alt="Abhishek Borase" />
+          </div>
+        </div>
       </section>
 
-      <p class="footer-note"><a href="/portfolio/">Return to the main site</a> to contact me and get full access to the ebook.</p>
+      <p class="footer-note"><a href="/portfolio/">Visit the main site</a> to know more about me.</p>
     </div>
+    <footer class="copyright-footer">
+      <p>© 2026 Abhishek Borase • DevOps Engineer</p>
+    </footer>
   </body>
 </html>
