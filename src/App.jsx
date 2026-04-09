@@ -2,7 +2,7 @@ import { useState } from 'react';
 import profileImage from './assets/profile.png';
 import officeHeroBg from './assets/office-bg-hero.svg';
 import devopsHero from './assets/devops-hero.svg';
-import devopsWorkflow from './assets/devops-workflow.svg';
+import ebookImg from './assets/Ebook-img.png';
 
 const experience = [
   {
@@ -66,6 +66,7 @@ function App() {
           <nav className={`nav ${isMobileMenuOpen ? 'nav-open' : ''}`}>
             <a href="#hero" onClick={() => scrollToSection('hero')}>Home</a>
             <a href="#about" onClick={() => scrollToSection('about')}>About</a>
+            <a href="#ebook" onClick={() => scrollToSection('ebook')}>Ebook</a>
             <a href="#experience" onClick={() => scrollToSection('experience')}>Experience</a>
             <a href="#skills" onClick={() => scrollToSection('skills')}>Skills</a>
             <a href="#contact" onClick={() => scrollToSection('contact')}>Contact</a>
@@ -136,14 +137,27 @@ function App() {
         </div>
       </section>
 
-      {/* DevOps Workflow */}
-      <section className="workflow">
+      {/* Ebook Promotion */}
+      <section id="ebook" className="ebook-section">
         <div className="container">
-          <div className="section-header center">
-            <h2>My DevOps Approach</h2>
-            <p>A systematic pipeline for delivering excellence continuously</p>
+          <div className="ebook-card">
+            <div className="ebook-copy">
+              <span className="eyebrow">New Ebook</span>
+              <h2>Deploy Faster, Break Less</h2>
+              <p>Discover the actionable DevOps framework I wrote to help engineers build stable systems, automate confidently, and ship production-ready solutions faster.</p>
+              <ul className="ebook-features">
+                <li>Practical CI/CD patterns for modern teams</li>
+                <li>Real-world automation, monitoring, and resilience guidance</li>
+                <li>Clear workflows for stable production delivery</li>
+                <li>Hands-on infrastructure and monitoring best practices</li>
+                <li>Release strategies that reduce outages and rework</li>
+              </ul>
+              <a className="btn btn-primary ebook-cta" href="/ebook-preview.html">Preview</a>
+            </div>
+            <div className="ebook-image">
+              <img src={ebookImg} alt="Ebook cover Deploy Faster, Break Less" />
+            </div>
           </div>
-          <img src={devopsWorkflow} alt="DevOps workflow pipeline" className="workflow-image" />
         </div>
       </section>
 
