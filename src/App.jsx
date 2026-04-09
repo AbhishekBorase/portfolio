@@ -152,7 +152,7 @@ function App() {
                 <li>Hands-on infrastructure and monitoring best practices</li>
                 <li>Release strategies that reduce outages and rework</li>
               </ul>
-              <a className="btn btn-primary ebook-cta" href="/ebook-preview.html">Preview</a>
+              <a className="btn btn-primary ebook-cta" href="/portfolio/ebook-preview.html">Preview</a>
             </div>
             <div className="ebook-image">
               <img src={ebookImg} alt="Ebook cover Deploy Faster, Break Less" />
