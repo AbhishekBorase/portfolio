@@ -117,7 +117,7 @@ function App() {
             <p>3+ years of experience designing, deploying, and maintaining cloud-native systems with expertise in CI/CD automation, Kubernetes, and AWS.</p>
             <div className="hero-actions">
               <button className="btn btn-primary" onClick={() => scrollToSection('contact')}>Contact Me</button>
-              <a href="https://drive.google.com/file/d/1pdLCEQdIzNB4pAfkdEObo4ZlvaUiJ-I1/view?usp=sharing" target="_blank" rel="noreferrer" className="btn btn-secondary">Download Resume</a>
+              <a href="https://drive.google.com/file/d/1ouw1yqDlm2QB7DXJt5vJQfkTW03HBMh9/view?usp=sharing" target="_blank" rel="noreferrer" className="btn btn-secondary">Download Resume</a>
             </div>
           </div>
           <div className="hero-image">
